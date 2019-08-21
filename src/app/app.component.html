@@ -1,25 +1,66 @@
+<div class="container">
+  <button mat-raised-button class="w-100 m-3" color="primary" (click)="refresh()">
+    Refresh
+  </button>
+</div>
 <div *ngIf="dataSource">
   <div class="container">
-    <table mat-table [dataSource]="dataSource" class="w-100 m-3   mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort class="w-100 m-3   mat-elevation-z8">
 
       <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef>No.   </th>
-        <td mat-cell *matCellDef="let item"> {{ item.id }} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <div class="mx-1">No.</div>
+        </th>
+        <td mat-cell *matCellDef="let item">
+          <div class="mx-1">{{ item.id }}</div>
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="title">
-        <th mat-header-cell *matHeaderCellDef>Title</th>
-        <td mat-cell *matCellDef="let item">{{ item.title }} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <div class="mx-1">Title</div>
+        </th>
+        <td mat-cell *matCellDef="let item">
+          <div class="mx-1">{{ item.title }}</div>
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="userId">
-        <th mat-header-cell *matHeaderCellDef>User Id   </th>
-        <td mat-cell *matCellDef="let item">   {{ item.userId }} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <div class="mx-1">UserId</div>
+        </th>
+        <td mat-cell *matCellDef="let item">
+          <div class="mx-1">{{ item.userId }}</div>
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="completed">
-        <th mat-header-cell *matHeaderCellDef> Symbol</th>
-        <td mat-cell *matCellDef="let item"> {{ item.completed }} </td>
+        <th mat-header-cell *matHeaderCellDef>
+          <div class="mx-1">Status</div>
+        </th>
+        <td mat-cell *matCellDef="let item">
+          <div class="mx-1">{{ item.completed }}</div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef>
+          <div class="mx-2">
+            <button mat-icon-button color="accent" (click)="addItem()">
+              <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+            </button>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let item">
+          <div class="mx-2">
+            <button mat-icon-button color="accent" (click)="editItem(item.id)">
+              <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="deleteItem(item.id)">
+              <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
+            </button>
+          </div>
+        </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
