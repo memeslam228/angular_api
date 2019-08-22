@@ -47,5 +47,4 @@ export class AppComponent {
   addItem() {
     console.log('Added!!!');
   }
-
 }
