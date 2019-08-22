@@ -16,16 +16,22 @@ export class ApiCrudService {
     return this.http.get(urlRoot, {observe: 'response'});
   }
 
-  post() {
-
+  post(titlE: string, completeD: boolean, userID: string) {
+    return this.http.post(
+      urlRoot,
+      {title: titlE, completed: completeD, userId: userID},
+      {observe: 'response'});
   }
 
-  patch() {
-
+  patch(id: string, titlE: string, completeD: boolean, userID: string) {
+    return this.http.patch(
+      urlRoot + '/' + id,
+      {title: titlE, completed: completeD, userId: userID},
+      {observe: 'response'});
   }
 
-  delete() {
-
+  delete(id: string) {
+    return this.http.delete(urlRoot + '/' + id, {observe: 'response'});
   }
 
 }

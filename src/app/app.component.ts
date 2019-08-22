@@ -29,15 +29,17 @@ export class AppComponent {
       setTimeout(() => {
         this.dataSource.sort = this.sort;
       });
+    }, error => {
+      console.log(error);
     });
   }
 
-  refresh() {
-    this.matTable.renderRows();
-  }
-
   deleteItem(itemId: string) {
-    console.log(itemId);
+    this.crud.delete(itemId).subscribe(() => {
+      this.getPosts();
+      console.log('Success!!!');
+    },
+        error => console.log(error));
   }
 
   editItem(itemId: string) {
