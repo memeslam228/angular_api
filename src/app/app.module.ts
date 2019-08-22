@@ -4,14 +4,26 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 
-
-
 import { AppComponent } from './app.component';
-import {MatButtonModule, MatIconModule, MatSortModule} from '@angular/material';
+import { DialogAddComponent } from './dialog-add/dialog-add.component';
+import { DialogPatchComponent } from './dialog-patch/dialog-patch.component';
+
+import {
+  MatSnackBarModule,
+  MatButtonModule,
+  MatDialogModule,
+  MatIconModule,
+  MatInputModule,
+  MatSortModule,
+  MatCheckboxModule
+} from '@angular/material';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DialogAddComponent,
+    DialogPatchComponent
   ],
   imports: [
     MatTableModule,
@@ -20,9 +32,18 @@ import {MatButtonModule, MatIconModule, MatSortModule} from '@angular/material';
     BrowserAnimationsModule,
     MatSortModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule,
+    MatInputModule,
+    MatSnackBarModule,
+    ReactiveFormsModule,
+    MatCheckboxModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    DialogAddComponent,
+    DialogPatchComponent
+  ]
 })
 export class AppModule { }

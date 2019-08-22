@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>Adding new TODO</h1>
+<div mat-dialog-content>
+  <mat-dialog-content [formGroup]="form">
+    <mat-form-field class="w-100">
+      <input matInput
+             placeholder="User Id"
+             formControlName="userId">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="w-100">
+      <textarea matInput
+                placeholder="Title"
+                formControlName="title">
+      </textarea>
+    </mat-form-field>
+    <br>
+    <div class="w-100">
+      <mat-checkbox formControlName="completed">Completed</mat-checkbox>
+    </div>
+  </mat-dialog-content>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button (click)="onSave()">Ok</button>
+</div>
