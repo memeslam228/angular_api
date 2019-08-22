@@ -1,9 +1,7 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
-
-import {Todo} from '../services/todo';
+import {MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-dialog-add',
@@ -15,7 +13,6 @@ export class DialogAddComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<DialogAddComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Todo,
     private fb: FormBuilder) {}
 
   ngOnInit() {

@@ -1,8 +1,13 @@
 import {Component, ViewChild} from '@angular/core';
+
 import {MatDialog, MatSnackBar, MatSort, MatTableDataSource} from '@angular/material';
 
 import {ApiCrudService} from './services/api-crud.service';
+
 import {DialogAddComponent} from './dialog-add/dialog-add.component';
+import {DialogPatchComponent} from './dialog-patch/dialog-patch.component';
+
+import {Todo} from './services/todo';
 
 @Component({
   selector: 'app-root',
@@ -43,8 +48,12 @@ export class AppComponent {
       error => this.openSnackBar(error));
   }
 
-  editItem(itemId: string) {
-    console.log(itemId);
+  editItem(id: string, title: string, completed: boolean, itemId: string) {
+    this.crud.patch(id, title, completed, itemId).subscribe(() => {
+        this.getPosts();
+        this.openSnackBar('It was successfully edited!!!');
+      },
+      error => this.openSnackBar(error));
   }
 
   addItem(title: string, userId: string, completed: boolean) {
@@ -67,14 +76,16 @@ export class AppComponent {
     });
   }
 
-  openEditDialog(): void {
-    const dialogRef = this.dialog.open(DialogAddComponent, {
+  openEditDialog(item: Todo): void {
+    const dialogRef = this.dialog.open(DialogPatchComponent, {
       width: '500px',
-      data: {}
+      data: {id: item.id, userId: item.userId, title: item.title, completed: item.completed}
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
+      if (result) {
+        this.editItem(result.id, result.title, result.completed, result.userId);
+      }
     });
   }
 
