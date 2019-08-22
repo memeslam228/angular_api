@@ -1,13 +1,9 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatTableModule } from '@angular/material/table';
-
-import { AppComponent } from './app.component';
-import { DialogAddComponent } from './dialog-add/dialog-add.component';
-import { DialogPatchComponent } from './dialog-patch/dialog-patch.component';
-
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {HttpClientModule} from '@angular/common/http';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatTableModule} from '@angular/material/table';
+import {ReactiveFormsModule} from '@angular/forms';
 import {
   MatSnackBarModule,
   MatButtonModule,
@@ -17,7 +13,10 @@ import {
   MatSortModule,
   MatCheckboxModule
 } from '@angular/material';
-import {ReactiveFormsModule} from '@angular/forms';
+
+import {AppComponent} from './app.component';
+import {DialogAddComponent} from './dialog-add/dialog-add.component';
+import {DialogPatchComponent} from './dialog-patch/dialog-patch.component';
 
 @NgModule({
   declarations: [
@@ -46,4 +45,5 @@ import {ReactiveFormsModule} from '@angular/forms';
     DialogPatchComponent
   ]
 })
-export class AppModule { }
+export class AppModule {
+}
